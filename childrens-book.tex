@@ -48,12 +48,6 @@ bindingoffset=0.2in]{geometry}
 \setlength{\storyboxheight}{\dimexpr\textheight-\storytopoffset\relax}
 \setlength{\illustrationboxwidth}{0.9\textwidth}
 
-\newcommand{\alignfirststorypage}{%
-  \ifodd\value{page}
-    \thispagestyle{empty}\null\newpage
-  \fi
-}
-
 \newcommand{\illustrationplaceholder}[1]{%
   \setlength{\fboxsep}{0pt}%
   \colorlet{placeholderborder}{black!40}%

@@ -13,8 +13,6 @@ This repository now includes a 9x12 children's book LaTeX template in `childrens
 
 Put artwork files in `figures/` and keep the filenames in `childrens-book.tex` in sync with those files.
 
-If you later add front matter and `Story 1` no longer opens on the left-hand page, insert `\alignfirststorypage` immediately before the first `\storyspread` block.
-
 ## Build
 
 Compile with XeLaTeX or LuaLaTeX because the template uses system fonts:
