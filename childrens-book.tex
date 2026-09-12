@@ -44,16 +44,11 @@ bindingoffset=0.2in]{geometry}
 \newlength{\storytopoffset}
 \newlength{\storyboxheight}
 \newlength{\illustrationboxwidth}
+\newlength{\illustrationboxheight}
 \setlength{\storytopoffset}{0.08\textheight}
 \setlength{\storyboxheight}{\dimexpr\textheight-\storytopoffset\relax}
 \setlength{\illustrationboxwidth}{0.9\textwidth}
-
-\newcommand{\startstorysection}{%
-  \clearpage
-  \ifodd\value{page}\else
-    \thispagestyle{empty}\null\newpage
-  \fi
-}
+\setlength{\illustrationboxheight}{0.82\textheight}
 
 \newcommand{\storypage}[2]{%
   \thispagestyle{empty}%
@@ -77,7 +72,7 @@ bindingoffset=0.2in]{geometry}
   \thispagestyle{empty}%
   \vspace*{\fill}%
   \begin{center}
-    \includegraphics[width=\illustrationboxwidth,height=0.82\textheight,keepaspectratio]{#1}
+    \includegraphics[width=\illustrationboxwidth,height=\illustrationboxheight,keepaspectratio]{#1}
   \end{center}
   \vspace*{\fill}%
   \newpage
@@ -102,8 +97,6 @@ bindingoffset=0.2in]{geometry}
   \end{center}
   \vspace*{\fill}
 \end{titlepage}
-
-\startstorysection
 
 \storyspread
   {Story 1}
@@ -152,7 +145,7 @@ bindingoffset=0.2in]{geometry}
 
 \storyspread
   {Story 10}
-  {If you need front matter later, keep it ahead of the spreads so the story section can still begin on a left-hand page.}
+  {You can swap in your own spread titles or remove them entirely if you want the book to read as uninterrupted story text.}
   {figures/illustration-10.png}
 
 \storyspread
