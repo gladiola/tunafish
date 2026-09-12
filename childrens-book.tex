@@ -50,6 +50,22 @@ bindingoffset=0.2in]{geometry}
 \setlength{\illustrationboxwidth}{0.9\textwidth}
 \setlength{\illustrationboxheight}{0.82\textheight}
 
+\newcommand{\illustrationplaceholder}[1]{%
+  \setlength{\fboxsep}{0pt}%
+  \colorlet{placeholderborder}{black!40}%
+  \colorlet{placeholderfill}{black!4}%
+  \fcolorbox{placeholderborder}{placeholderfill}{%
+    \begin{minipage}[c][\illustrationboxheight][c]{\illustrationboxwidth}
+      \centering
+      {\headingfont\fontsize{22}{26}\selectfont Illustration Placeholder\par}
+      \vspace{1em}
+      {\Large #1\par}
+      \vspace{1em}
+      {\normalsize Add an artwork path as the third \texttt{\string\storyspread} argument.\par}
+    \end{minipage}%
+  }%
+}
+
 \newcommand{\storypage}[2]{%
   \thispagestyle{empty}%
   \vspace*{\storytopoffset}%
@@ -68,11 +84,13 @@ bindingoffset=0.2in]{geometry}
   \newpage
 }
 
-\newcommand{\illustrationpage}[1]{%
+\newcommand{\illustrationpage}[2]{%
   \thispagestyle{empty}%
   \vspace*{\fill}%
   \begin{center}
-    \includegraphics[width=\illustrationboxwidth,height=\illustrationboxheight,keepaspectratio]{#1}
+    \IfBlankTF{#2}
+      {\illustrationplaceholder{#1}}
+      {\includegraphics[width=\illustrationboxwidth,height=\illustrationboxheight,keepaspectratio]{#2}}
   \end{center}
   \vspace*{\fill}%
   \newpage
@@ -80,7 +98,7 @@ bindingoffset=0.2in]{geometry}
 
 \NewDocumentCommand{\storyspread}{m m m}{%
   \storypage{#1}{#2}
-  \illustrationpage{#3}
+  \illustrationpage{#1}{#3}
 }
 
 \begin{document}
@@ -101,61 +119,61 @@ bindingoffset=0.2in]{geometry}
 \storyspread
   {Story 1}
   {Replace this paragraph with the first page of story text. Keep each story page short enough to remain on a single page so that every illustration stays on the facing right-hand page.}
-  {figures/illustration-01.png}
+  {}
 
 \storyspread
   {Story 2}
   {Use one \texttt{\textbackslash storyspread} command per spread. The title and story text belong on the left page, and the figure file belongs on the facing right page.}
-  {figures/illustration-02.png}
+  {}
 
 \storyspread
   {Story 3}
   {This template keeps the fonts aligned with the reference book layout while opening up the page for larger artwork and more generous children's-book spacing.}
-  {figures/illustration-03.png}
+  {}
 
 \storyspread
   {Story 4}
   {Drop each illustration into the \texttt{figures/} directory and keep the filenames here in sync with the files you add. PNG, JPG, and PDF artwork all work well.}
-  {figures/illustration-04.png}
+  {}
 
 \storyspread
   {Story 5}
   {Each spread already points at a bundled placeholder image, so you can review the page rhythm immediately and then swap in final artwork as it becomes available.}
-  {figures/illustration-05.png}
+  {}
 
 \storyspread
   {Story 6}
   {You can rewrite the title on each spread or remove it if you want uninterrupted story copy. The key constraint is that each spread should still resolve to one text page and one art page.}
-  {figures/illustration-06.png}
+  {}
 
 \storyspread
   {Story 7}
   {For longer manuscripts, split the text into additional spreads rather than letting a single story page overflow and disturb the left/right pairing.}
-  {figures/illustration-07.png}
+  {}
 
 \storyspread
   {Story 8}
   {The mirrored margins leave a little extra room on the inside edge for binding while keeping the outside edge open for artwork and read-aloud text.}
-  {figures/illustration-08.png}
+  {}
 
 \storyspread
   {Story 9}
   {This sample includes twelve spreads because you expect twelve illustrations and twelve matching story pages. Add or remove spreads by copying or deleting complete blocks.}
-  {figures/illustration-09.png}
+  {}
 
 \storyspread
   {Story 10}
   {You can swap in your own spread titles or remove them entirely if you want the book to read as uninterrupted story text.}
-  {figures/illustration-10.png}
+  {}
 
 \storyspread
   {Story 11}
   {For print-ready output, compile with XeLaTeX or LuaLaTeX on a machine that has the reference fonts installed.}
-  {figures/illustration-11.png}
+  {}
 
 \storyspread
   {Story 12}
   {Once the manuscript and art are in place, this file can serve as the working master for the full book.}
-  {figures/illustration-12.png}
+  {}
 
 \end{document}
