@@ -92,7 +92,11 @@ bindingoffset=0.2in]{geometry}
   \begin{center}
     \ifstrempty{#2}
       {\illustrationplaceholder{#1}}
-      {\includegraphics[width=\illustrationboxwidth,height=\illustrationboxheight,keepaspectratio]{#2}}
+      {%
+        \IfFileExists{#2}
+          {\includegraphics[width=\illustrationboxwidth,height=\illustrationboxheight,keepaspectratio]{#2}}
+          {\illustrationplaceholder{#1}}%
+      }
   \end{center}
   \vspace*{\fill}%
   \newpage
