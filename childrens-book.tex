@@ -13,7 +13,6 @@ bindingoffset=0.2in]{geometry}
 
 \usepackage{fontspec}
 \usepackage{graphicx}
-\usepackage{ifoddpage}
 \usepackage{xcolor}
 \usepackage{xparse}
 \usepackage{setspace}
@@ -38,14 +37,6 @@ bindingoffset=0.2in]{geometry}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \linespread{1.06}
-
-\newcommand{\startstorysection}{%
-  \clearpage
-  \checkoddpage
-  \ifoddpage
-    \thispagestyle{empty}\null\newpage
-  \fi
-}
 
 \newcommand{\illustrationplaceholder}[1]{%
   \setlength{\fboxsep}{0pt}%
@@ -111,8 +102,6 @@ bindingoffset=0.2in]{geometry}
   \end{center}
   \vspace*{\fill}
 \end{titlepage}
-
-\startstorysection
 
 \storyspread
   {Story 1}
