@@ -17,7 +17,7 @@ Put artwork files in `figures/`, then replace the empty third argument in each `
 
 Compile with XeLaTeX or LuaLaTeX because the template uses system fonts:
 
-From the repository root:
+From the repository root, choose one engine:
 
 ```bash
 xelatex childrens-book.tex
