@@ -11,7 +11,7 @@ This repository now includes a 9x12 children's book LaTeX template in `childrens
 
 ## Add artwork
 
-Put artwork files in `figures/`, then replace the empty third argument in each `\storyspread{...}{...}{}` call with the path to the matching image.
+Put artwork files in `figures/`, then replace the empty third argument in each `\storyspread{...}{...}{}` call with the full path to the matching image, such as `figures/illustration-01.png`.
 
 ## Build
 
