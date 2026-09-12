@@ -20,4 +20,7 @@ Compile with XeLaTeX or LuaLaTeX because the template uses system fonts:
 ```bash
 cd tunafish
 xelatex childrens-book.tex
+
+# or
+lualatex childrens-book.tex
 ```

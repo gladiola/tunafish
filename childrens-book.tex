@@ -13,6 +13,7 @@ bindingoffset=0.2in]{geometry}
 
 \usepackage{fontspec}
 \usepackage{graphicx}
+\usepackage{ifoddpage}
 \usepackage{xcolor}
 \usepackage{xparse}
 \usepackage{setspace}
@@ -38,9 +39,10 @@ bindingoffset=0.2in]{geometry}
 \setlength{\parskip}{0pt}
 \linespread{1.06}
 
-\newcommand{\ensureleftpage}{%
+\newcommand{\cleartoevenpage}{%
   \clearpage
-  \ifodd\value{page}
+  \checkoddpage
+  \ifoddpage
     \thispagestyle{empty}\null\newpage
   \fi
 }
@@ -64,9 +66,11 @@ bindingoffset=0.2in]{geometry}
 \newcommand{\storypage}[2]{%
   \thispagestyle{empty}%
   \vspace*{0.08\textheight}%
-  {\chapterfont\fontsize{26}{30}\selectfont #1\par}%
-  \vspace{1.75em}%
-  {\raggedright\fontsize{18}{26}\selectfont #2\par}%
+  \noindent\parbox[t][0.74\textheight][t]{\textwidth}{%
+    {\chapterfont\fontsize{26}{30}\selectfont #1\par}%
+    \vspace{1.75em}%
+    {\raggedright\fontsize{18}{26}\selectfont #2\par}%
+  }%
   \vfill
   \newpage
 }
@@ -84,7 +88,7 @@ bindingoffset=0.2in]{geometry}
 }
 
 \NewDocumentCommand{\storyspread}{m m m}{%
-  \ensureleftpage
+  \cleartoevenpage
   \storypage{#1}{#2}
   \illustrationpage{#3}
 }
