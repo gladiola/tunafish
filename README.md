@@ -13,7 +13,7 @@ This repository now includes a 9x12 children's book LaTeX template in `childrens
 
 Put artwork files in `figures/` and keep the filenames in `childrens-book.tex` in sync with those files.
 
-The sample spreads assume the story starts immediately after the title page. If you add front matter before `Story 1`, insert or remove a blank page so the first story page still lands on the left-hand side of the spread.
+Keep `\alignfirststorypage` immediately before the first `\storyspread` block so the opening story page stays on the left-hand side if you add front matter later.
 
 ## Build
 

@@ -42,6 +42,12 @@ bindingoffset=0.2in]{geometry}
 \newlength{\storyboxheight}
 \setlength{\storyboxheight}{0.74\textheight}
 
+\newcommand{\alignfirststorypage}{%
+  \ifodd\value{page}\else
+    \thispagestyle{empty}\null\newpage
+  \fi
+}
+
 \newcommand{\illustrationplaceholder}[1]{%
   \setlength{\fboxsep}{0pt}%
   \colorlet{placeholderborder}{black!40}%
@@ -111,6 +117,8 @@ bindingoffset=0.2in]{geometry}
   \end{center}
   \vspace*{\fill}
 \end{titlepage}
+
+\alignfirststorypage
 
 \storyspread
   {Story 1}
