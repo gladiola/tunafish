@@ -55,22 +55,6 @@ bindingoffset=0.2in]{geometry}
   \fi
 }
 
-\newcommand{\illustrationplaceholder}[1]{%
-  \setlength{\fboxsep}{0pt}%
-  \colorlet{placeholderborder}{black!40}%
-  \colorlet{placeholderfill}{black!4}%
-  \fcolorbox{placeholderborder}{placeholderfill}{%
-    \begin{minipage}[c][0.8\textheight][c]{\illustrationboxwidth}
-      \centering
-      {\headingfont\fontsize{22}{26}\selectfont Illustration Placeholder\par}
-      \vspace{1.25em}
-      {\Large Drop artwork here:\par}
-      \vspace{0.6em}
-      {\ttfamily\large\detokenize{#1}\par}
-    \end{minipage}%
-  }%
-}
-
 \newcommand{\storypage}[2]{%
   \thispagestyle{empty}%
   \vspace*{\storytopoffset}%
@@ -93,9 +77,7 @@ bindingoffset=0.2in]{geometry}
   \thispagestyle{empty}%
   \vspace*{\fill}%
   \begin{center}
-    \IfFileExists{#1}
-      {\includegraphics[width=\illustrationboxwidth,height=0.82\textheight,keepaspectratio]{#1}}
-      {\illustrationplaceholder{#1}}
+    \includegraphics[width=\illustrationboxwidth,height=0.82\textheight,keepaspectratio]{#1}
   \end{center}
   \vspace*{\fill}%
   \newpage

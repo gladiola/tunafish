@@ -7,11 +7,11 @@ This repository now includes a 9x12 children's book LaTeX template in `childrens
 - Uses the same primary font setup as `KandRStyle/ut.tex` from `gladiola/bookwork2`
 - Lays out each spread as a left-hand story page and a right-hand illustration page
 - Includes 12 boilerplate spreads
-- Shows a placeholder frame on illustration pages until artwork files are added
+- Includes 12 placeholder illustration files that can be replaced with final artwork
 
 ## Add artwork
 
-Put artwork files in `figures/` and keep the filenames in `childrens-book.tex` in sync with those files.
+Replace the placeholder files in `figures/` with your final artwork, or update the filenames in `childrens-book.tex` if you want to use different names.
 
 Keep `\startstorysection` immediately before the first `\storyspread` block if you add front matter and need to preserve the left-page story/right-page illustration rhythm.
 
