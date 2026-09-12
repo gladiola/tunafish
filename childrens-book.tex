@@ -39,9 +39,14 @@ bindingoffset=0.2in]{geometry}
 \setlength{\parskip}{0pt}
 \linespread{1.06}
 
+\newcommand{\booktitle}{The Tunafish Adventure}
 \newsavebox{\storybox}
+\newlength{\storytopoffset}
 \newlength{\storyboxheight}
-\setlength{\storyboxheight}{0.74\textheight}
+\newlength{\illustrationboxwidth}
+\setlength{\storytopoffset}{0.08\textheight}
+\setlength{\storyboxheight}{\dimexpr\textheight-\storytopoffset\relax}
+\setlength{\illustrationboxwidth}{0.9\textwidth}
 
 \newcommand{\alignfirststorypage}{%
   \ifodd\value{page}
@@ -54,7 +59,7 @@ bindingoffset=0.2in]{geometry}
   \colorlet{placeholderborder}{black!40}%
   \colorlet{placeholderfill}{black!4}%
   \fcolorbox{placeholderborder}{placeholderfill}{%
-    \begin{minipage}[c][0.8\textheight][c]{0.9\textwidth}
+    \begin{minipage}[c][0.8\textheight][c]{\illustrationboxwidth}
       \centering
       {\headingfont\fontsize{22}{26}\selectfont Illustration Placeholder\par}
       \vspace{1.25em}
@@ -67,7 +72,7 @@ bindingoffset=0.2in]{geometry}
 
 \newcommand{\storypage}[2]{%
   \thispagestyle{empty}%
-  \vspace*{0.08\textheight}%
+  \vspace*{\storytopoffset}%
   \sbox{\storybox}{%
     \begin{minipage}[t]{\textwidth}
       {\chapterfont\fontsize{26}{30}\selectfont #1\par}%
@@ -88,7 +93,7 @@ bindingoffset=0.2in]{geometry}
   \vspace*{\fill}%
   \begin{center}
     \IfFileExists{#1}
-      {\includegraphics[width=\textwidth,height=0.82\textheight,keepaspectratio]{#1}}
+      {\includegraphics[width=\illustrationboxwidth,height=0.82\textheight,keepaspectratio]{#1}}
       {\illustrationplaceholder{#1}}
   \end{center}
   \vspace*{\fill}%
@@ -100,17 +105,13 @@ bindingoffset=0.2in]{geometry}
   \illustrationpage{#3}
 }
 
-\title{{\chapterfont The Tunafish Adventure}}
-\author{}
-\date{}
-
 \begin{document}
 
 \begin{titlepage}
   \thispagestyle{empty}
   \vspace*{\fill}
   \begin{center}
-    {\chapterfont\fontsize{34}{40}\selectfont The Tunafish Adventure\par}
+    {\chapterfont\fontsize{34}{40}\selectfont \booktitle\par}
     \vspace{1.5em}
     {\headingfont\fontsize{18}{24}\selectfont Children's Book Layout Template\par}
     \vspace{2em}
