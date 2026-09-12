@@ -13,6 +13,7 @@ bindingoffset=0.2in]{geometry}
 \fi
 
 \usepackage{fontspec}
+\usepackage{etoolbox}
 \usepackage{graphicx}
 \usepackage{xcolor}
 \usepackage{xparse}
@@ -88,7 +89,7 @@ bindingoffset=0.2in]{geometry}
   \thispagestyle{empty}%
   \vspace*{\fill}%
   \begin{center}
-    \IfBlankTF{#2}
+    \ifstrempty{#2}
       {\illustrationplaceholder{#1}}
       {\includegraphics[width=\illustrationboxwidth,height=\illustrationboxheight,keepaspectratio]{#2}}
   \end{center}
