@@ -42,7 +42,7 @@ bindingoffset=0.2in]{geometry}
 \newcommand{\cleartoevenpage}{%
   \clearpage
   \checkoddpage
-  \ifoddpage
+  \ifoddpage\else
     \thispagestyle{empty}\null\newpage
   \fi
 }
