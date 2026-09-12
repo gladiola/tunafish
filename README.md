@@ -1,6 +1,6 @@
 # tunafish
 
-This repository now includes a 9x12 children's book LaTeX template in `/home/runner/work/tunafish/tunafish/childrens-book.tex`.
+This repository now includes a 9x12 children's book LaTeX template in `childrens-book.tex`.
 
 ## Template notes
 
@@ -11,13 +11,13 @@ This repository now includes a 9x12 children's book LaTeX template in `/home/run
 
 ## Add artwork
 
-Put artwork files in `/home/runner/work/tunafish/tunafish/figures/` and keep the filenames in `childrens-book.tex` in sync with those files.
+Put artwork files in `figures/` and keep the filenames in `childrens-book.tex` in sync with those files.
 
 ## Build
 
 Compile with XeLaTeX or LuaLaTeX because the template uses system fonts:
 
 ```bash
-cd /home/runner/work/tunafish/tunafish
+cd tunafish
 xelatex childrens-book.tex
 ```
