@@ -82,6 +82,7 @@ bindingoffset=0.2in]{geometry}
   \ifdim\dimexpr\ht\storybox+\dp\storybox\relax>\storyboxheight
     \global\storypageokfalse
     \PackageError{childrens-book}{Story page '#1' is too long for a single spread page}{Split the text across multiple \string\storyspread\space commands or shorten the copy.}%
+    \clearpage
   \else
     \noindent\parbox[t][\storyboxheight][t]{\textwidth}{\usebox{\storybox}}%
     \vfill
