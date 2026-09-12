@@ -42,6 +42,7 @@ bindingoffset=0.2in]{geometry}
 
 \newcommand{\booktitle}{Your Book Title}
 \newsavebox{\storybox}
+\newif\ifstorypageok
 \newlength{\storytopoffset}
 \newlength{\storyboxheight}
 \newlength{\illustrationboxwidth}
@@ -68,6 +69,7 @@ bindingoffset=0.2in]{geometry}
 }
 
 \newcommand{\storypage}[2]{%
+  \global\storypageoktrue
   \thispagestyle{empty}%
   \vspace*{\storytopoffset}%
   \sbox{\storybox}{%
@@ -78,8 +80,8 @@ bindingoffset=0.2in]{geometry}
     \end{minipage}%
   }%
   \ifdim\dimexpr\ht\storybox+\dp\storybox\relax>\storyboxheight
+    \global\storypageokfalse
     \PackageError{childrens-book}{Story page '#1' is too long for a single spread page}{Split the text across multiple \string\storyspread\space commands or shorten the copy.}%
-    \expandafter\endinput
   \else
     \noindent\parbox[t][\storyboxheight][t]{\textwidth}{\usebox{\storybox}}%
     \vfill
@@ -96,7 +98,10 @@ bindingoffset=0.2in]{geometry}
       {%
         \IfFileExists{#2}
           {\includegraphics[width=\illustrationboxwidth,height=\illustrationboxheight,keepaspectratio]{#2}}
-          {\illustrationplaceholder{#1}}%
+          {%
+            \PackageWarning{childrens-book}{Illustration file '#2' was not found. Using the placeholder panel instead}%
+            \illustrationplaceholder{#1}%
+          }%
       }
   \end{center}
   \vspace*{\fill}%
@@ -105,7 +110,9 @@ bindingoffset=0.2in]{geometry}
 
 \NewDocumentCommand{\storyspread}{m m m}{%
   \storypage{#1}{#2}
-  \illustrationpage{#1}{#3}
+  \ifstorypageok
+    \illustrationpage{#1}{#3}
+  \fi
 }
 
 \newcommand{\samplebookspread}[1]{%
