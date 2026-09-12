@@ -13,14 +13,15 @@ This repository now includes a 9x12 children's book LaTeX template in `childrens
 
 Put artwork files in `figures/` and keep the filenames in `childrens-book.tex` in sync with those files.
 
+The sample spreads assume the story starts immediately after the title page. If you add front matter before `Story 1`, insert or remove a blank page so the first story page still lands on the left-hand side of the spread.
+
 ## Build
 
 Compile with XeLaTeX or LuaLaTeX because the template uses system fonts:
 
-```bash
-cd tunafish
-xelatex childrens-book.tex
+From the repository root:
 
-# or
+```bash
+xelatex childrens-book.tex
 lualatex childrens-book.tex
 ```

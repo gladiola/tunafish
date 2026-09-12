@@ -38,6 +38,10 @@ bindingoffset=0.2in]{geometry}
 \setlength{\parskip}{0pt}
 \linespread{1.06}
 
+\newsavebox{\storybox}
+\newlength{\storyboxheight}
+\setlength{\storyboxheight}{0.74\textheight}
+
 \newcommand{\illustrationplaceholder}[1]{%
   \setlength{\fboxsep}{0pt}%
   \colorlet{placeholderborder}{black!40}%
@@ -57,11 +61,17 @@ bindingoffset=0.2in]{geometry}
 \newcommand{\storypage}[2]{%
   \thispagestyle{empty}%
   \vspace*{0.08\textheight}%
-  \noindent\parbox[t][0.74\textheight][t]{\textwidth}{%
-    {\chapterfont\fontsize{26}{30}\selectfont #1\par}%
-    \vspace{1.75em}%
-    {\raggedright\fontsize{18}{26}\selectfont #2\par}%
+  \sbox{\storybox}{%
+    \begin{minipage}[t]{\textwidth}
+      {\chapterfont\fontsize{26}{30}\selectfont #1\par}%
+      \vspace{1.75em}%
+      {\raggedright\fontsize{18}{26}\selectfont #2\par}%
+    \end{minipage}%
   }%
+  \ifdim\dimexpr\ht\storybox+\dp\storybox\relax>\storyboxheight
+    \PackageError{childrens-book}{Story page '#1' is too long for a single spread page}{Split the text across multiple \string\storyspread\space commands or shorten the copy.}%
+  \fi
+  \noindent\parbox[t][\storyboxheight][t]{\textwidth}{\usebox{\storybox}}%
   \vfill
   \newpage
 }
@@ -79,7 +89,6 @@ bindingoffset=0.2in]{geometry}
 }
 
 \NewDocumentCommand{\storyspread}{m m m}{%
-  \clearpage
   \storypage{#1}{#2}
   \illustrationpage{#3}
 }
