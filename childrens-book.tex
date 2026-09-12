@@ -50,7 +50,7 @@ bindingoffset=0.2in]{geometry}
 
 \newcommand{\startstorysection}{%
   \clearpage
-  \ifodd\value{page}
+  \ifodd\value{page}\else
     \thispagestyle{empty}\null\newpage
   \fi
 }
